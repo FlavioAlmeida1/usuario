@@ -17,7 +17,7 @@ public class UsuarioDTO {
     private List<EnderecoDTO> enderecos;
     private List<TelefoneDTO> telefones;
 
-
+//DTO : Data Transfer object > Uma classe de transferencias de objetos.
 }
 
 

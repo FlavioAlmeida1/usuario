@@ -99,15 +99,33 @@ public UsuarioDTO paraUsuarioDTO(Usuario usuarioDTO) {
 
 
 }
-/* Em um padrao normal sem usar o "@Builder", seria criado o codigo dessa forma.
-    public Usuario paraUsuario(UsuarioDTO usuarioDTO){
-       Usuario usuario = new Usuario();
-       usuario.setEmail(usuarioDTO.getEmail());
-       usuario.setNome(usuarioDTO.getNome());
-    }
-   Não é errado fazer dessa forma, porem a utilização do builder vai permitir que não seja
-   criado mto codigo.
+/* Conversor ou Mapper : que nada mais é do que uma classe que pega todos os dados
+    que são passados para o DTO e transforma esses dados em uma Entity.
 
+-Um padrão normal sem usar o "@Builder", seria criado o código dessa forma.
+ {
+    public Usuario paraUsuario(UsuarioDTO usuarioDTO) {
+    Usuario usario = new Usuario();
+    usuario.setEmail(usuarioDTO.getEmail());
+    usuario.setSenha(usuarioDTO.getSenha());
+    }
+    utilizando builda diminui a quantidade codigos.
+
+    public Usuario paraUsuario(UsuarioDTO usuarioDTO) {
+    return Usuario.builder()
+    email(usuarioDTO.getEmail())
+    senha(usuarioDTO.getSenha())
+    .build();
+
+ }
+***************************************************************************************
+
+   Não é errado fazer dessa forma, porem a utilização do builder vai permitir que não seja
+   necessário criar mtos códigos.
+
+
+- Metodo para transformar os arrayLists (ex.: lista de
+      Exemplo utilizando o builder sem precisar utilizar o for.
    public List<Endereco> paraListarEndereco(List<EnderecoDTO> enderecoDTOS){
         return enderecoDTOS.stream().map(this::paraEndereco).toList();
 
